@@ -7,6 +7,13 @@
   --title-font: "LiHei Pro", "PingFang TC", "Heiti TC", "STHeiti", sans-serif;
   --subtitle-font: "Libre Franklin", "Inter", sans-serif;
   --accent-font: "Hiragino Kaku Gothic StdN", "Hiragino Kaku Gothic ProN", sans-serif;
+  --lh-display: 1.08;
+  --lh-title: 1.16;
+  --lh-heading: 1.25;
+  --lh-body: 1.35;
+  --lh-caption: 1.4;
+  --lh-ui: 1.2;
+  --lh-tight: 1.1;
 }
 
 * {
@@ -22,7 +29,7 @@ body {
   margin: 0;
   font-family: var(--subtitle-font);
   color: var(--text-main);
-  line-height: 1.25;
+  line-height: var(--lh-body);
   background: #fff;
 }
 
@@ -80,7 +87,7 @@ body.contents-open {
 .floating-nav-title {
   font-family: "Hiragino Kaku Gothic Std", "Hiragino Kaku Gothic ProN", sans-serif;
   font-size: clamp(15px, 2.3vw, 32px);
-  line-height: 1.06;
+  line-height: var(--lh-display);
   font-weight: 800;
   color: #000;
   flex: 1 1 auto;
@@ -99,7 +106,7 @@ body.contents-open {
   margin: 0;
   font-family: var(--subtitle-font);
   font-size: clamp(14px, 1.8vw, 20px);
-  line-height: 1.1;
+  line-height: var(--lh-tight);
   color: #000;
   cursor: pointer;
   flex: 0 0 auto;
@@ -160,7 +167,7 @@ body.contents-open {
   text-decoration: none;
   font-family: var(--subtitle-font);
   font-size: 14px;
-  line-height: 1.35;
+  line-height: var(--lh-body);
 }
 
 .contents-link:hover,
@@ -175,7 +182,7 @@ body.contents-open {
 .contents-link-primary {
   font-family: var(--title-font);
   font-size: 20px;
-  line-height: 1.15;
+  line-height: var(--lh-title);
 }
 
 .contents-link-secondary {
@@ -228,7 +235,7 @@ body.contents-open {
   margin: 0;
   font-family: "Konkhmer Sleokchher", serif;
   font-size: clamp(40px, 4.2vw, 48px);
-  line-height: 1.08;
+  line-height: var(--lh-display);
   font-weight: 400;
 }
 
@@ -236,7 +243,7 @@ body.contents-open {
   margin: 12px 0 0;
   font-family: "Inter", sans-serif;
   font-size: clamp(22px, 2.2vw, 24px);
-  line-height: 1.2;
+  line-height: var(--lh-heading);
 }
 
 .top-content {
@@ -260,11 +267,23 @@ body.contents-open {
   gap: 48px;
 }
 
+.section-copy-flow {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.section-copy-flow > ul {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
 .title-24 {
   margin: 0;
   font-family: var(--title-font);
   font-size: 24px;
-  line-height: 1.08;
+  line-height: var(--lh-title);
   color: var(--text-dark);
   font-weight: 400;
 }
@@ -273,7 +292,7 @@ body.contents-open {
   margin: 0;
   font-family: var(--subtitle-font);
   font-size: 20px;
-  line-height: 1.2;
+  line-height: var(--lh-heading);
   font-weight: 400;
   color: var(--text-dark);
 }
@@ -282,7 +301,7 @@ body.contents-open {
   margin: 0;
   font-family: var(--title-font);
   font-size: 20px;
-  line-height: 1.2;
+  line-height: var(--lh-heading);
   font-weight: 400;
 }
 
@@ -292,7 +311,29 @@ body.contents-open {
   margin: 0;
   font-family: var(--subtitle-font);
   font-size: 14px;
-  line-height: 1.35;
+  line-height: var(--lh-body);
+}
+
+.sub-14 :where(p, ul, ol) {
+  margin: 0;
+}
+
+.section-block :where(
+  ul:not(.species-legend):not(.species-temporal-legend):not(.location-daynight-legend),
+  ol:not(.citation-list)
+) {
+  margin: 0;
+  padding-left: 22px;
+  font-family: var(--subtitle-font);
+  font-size: 14px;
+  line-height: var(--lh-body);
+}
+
+.section-block :where(
+  ul:not(.species-legend):not(.species-temporal-legend):not(.location-daynight-legend),
+  ol:not(.citation-list)
+) li {
+  margin: 0;
 }
 
 .stack-para {
@@ -304,7 +345,7 @@ body.contents-open {
 .tiny-note {
   margin: 0;
   font-size: 10px;
-  line-height: 1.35;
+  line-height: var(--lh-caption);
   color: var(--text-main);
 }
 
@@ -363,7 +404,7 @@ body.contents-open {
   margin: 0;
   font-family: var(--subtitle-font);
   font-size: 20px;
-  line-height: 1.15;
+  line-height: var(--lh-title);
   font-weight: 400;
   color: var(--text-main);
 }
@@ -433,7 +474,7 @@ body.contents-open {
 
 .link-list a {
   font-size: 14px;
-  line-height: 1.2;
+  line-height: var(--lh-ui);
 }
 
 .two-col {
@@ -465,7 +506,7 @@ body.contents-open {
 .intro-card p {
   margin: 0;
   font-size: 14px;
-  line-height: 1.25;
+  line-height: var(--lh-caption);
   color: #000;
   text-align: center;
 }
@@ -481,6 +522,18 @@ body.contents-open {
   display: flex;
   flex-direction: column;
   gap: 48px;
+}
+
+.community-structure-section {
+  row-gap: 24px;
+}
+
+.community-structure-section > .big-20 {
+  grid-column: 1 / -1;
+}
+
+.community-structure-section > div {
+  gap: 24px;
 }
 
 .unsplash-grid {
@@ -575,7 +628,7 @@ body.contents-open {
   font-family: var(--accent-font);
   font-size: 22.4px;
   font-weight: 800;
-  line-height: 1.15;
+  line-height: var(--lh-title);
   letter-spacing: 0;
   color: #e0620d;
 }
@@ -654,6 +707,7 @@ body.contents-open {
 }
 
 .frame124-right {
+  gap: 12px;
   white-space: normal;
 }
 
@@ -708,7 +762,7 @@ body.contents-open {
   margin: 0;
   font-family: "Hiragino Kaku Gothic StdN", "Hiragino Kaku Gothic ProN", sans-serif;
   font-size: 12px;
-  line-height: 1;
+  line-height: var(--lh-tight);
   letter-spacing: 0;
   font-weight: 800;
 }
@@ -717,7 +771,7 @@ body.contents-open {
   margin: 34px 0 0;
   font-family: "Hiragino Kaku Gothic Std", "Hiragino Kaku Gothic ProN", sans-serif;
   font-size: 48px;
-  line-height: 1;
+  line-height: var(--lh-display);
   letter-spacing: 0;
   font-weight: 800;
 }
@@ -752,7 +806,7 @@ body.contents-open {
   justify-content: center;
   font-family: "Hiragino Kaku Gothic StdN", "Hiragino Kaku Gothic ProN", sans-serif;
   font-size: 12px;
-  line-height: 1;
+  line-height: var(--lh-tight);
   letter-spacing: 0;
   font-weight: 800;
   text-decoration: none;
@@ -764,12 +818,12 @@ body.contents-open {
 }
 
 .initiative-section-title {
-  line-height: 1;
+  line-height: var(--lh-title);
   letter-spacing: 0;
 }
 
 .research-objective-title {
-  line-height: 1;
+  line-height: var(--lh-title);
   letter-spacing: 0;
 }
 
@@ -787,7 +841,7 @@ body.contents-open {
   width: 100%;
   font-family: "Hiragino Kaku Gothic Std", "Hiragino Kaku Gothic ProN", sans-serif;
   font-size: 36px;
-  line-height: normal;
+  line-height: var(--lh-title);
   letter-spacing: 0;
   font-weight: 800;
   color: #00441f;
@@ -808,7 +862,7 @@ body.contents-open {
 }
 
 .map-copy {
-  gap: 48px;
+  gap: 24px;
 }
 
 .map-col {
@@ -832,20 +886,20 @@ body.contents-open {
 .data-source-mini p {
   margin: 0;
   font-size: 14px;
-  line-height: 1.35;
+  line-height: var(--lh-body);
   color: #7a7a7a;
 }
 
 .data-source-mini p:first-child {
   font-size: 20px;
-  line-height: 1;
+  line-height: var(--lh-heading);
   color: #000;
 }
 
 .built-vars-title {
   font-family: var(--title-font);
   font-size: 20px;
-  line-height: 1;
+  line-height: var(--lh-heading);
   letter-spacing: 0;
 }
 
@@ -875,7 +929,7 @@ body.contents-open {
   padding: 20px;
   font-family: var(--subtitle-font);
   font-size: 14px;
-  line-height: 1.35;
+  line-height: var(--lh-body);
   color: #6a6a6a;
 }
 
@@ -885,7 +939,7 @@ body.contents-open {
   border-collapse: collapse;
   font-family: var(--subtitle-font);
   font-size: 13px;
-  line-height: 1.3;
+  line-height: var(--lh-caption);
   color: #222;
 }
 
@@ -945,7 +999,7 @@ body.contents-open {
   margin: 0 0 10px;
   font-family: var(--subtitle-font);
   font-size: 20px;
-  line-height: normal;
+  line-height: var(--lh-heading);
   color: #000;
   font-weight: 400;
   letter-spacing: 0;
@@ -954,7 +1008,7 @@ body.contents-open {
 .var-item p {
   margin: 0;
   font-size: 14px;
-  line-height: normal;
+  line-height: var(--lh-body);
   color: #474747;
   letter-spacing: 0;
 }
@@ -1017,7 +1071,7 @@ body.contents-open {
   margin: 0;
   font-family: var(--subtitle-font);
   font-size: 14px;
-  line-height: 1.35;
+  line-height: var(--lh-body);
   color: #6a6a6a;
 }
 
@@ -1025,7 +1079,7 @@ body.contents-open {
   margin: 0 0 12px;
   font-family: var(--subtitle-font);
   font-size: 14px;
-  line-height: 1.2;
+  line-height: var(--lh-ui);
   font-weight: 700;
   color: #000;
   text-align: center;
@@ -1078,10 +1132,28 @@ body.contents-open {
   gap: 8px;
   font-family: var(--subtitle-font);
   font-size: 13px;
-  line-height: 1.2;
+  line-height: var(--lh-ui);
   color: #333;
   cursor: pointer;
   transition: opacity 160ms ease, color 160ms ease;
+}
+
+.species-legend-heading {
+  margin: 0 0 2px;
+  font-family: var(--subtitle-font);
+  font-size: 12px;
+  line-height: var(--lh-ui);
+  font-weight: 700;
+  color: #000;
+}
+
+.species-legend-item.is-mammal {
+  padding-left: 16px;
+}
+
+.species-legend-item.is-non-mammal {
+  margin-top: 3px;
+  padding-left: 0;
 }
 
 .species-legend-item.is-active {
@@ -1105,7 +1177,7 @@ body.contents-open {
   margin: 0;
   font-family: var(--subtitle-font);
   font-size: 14px;
-  line-height: 1.35;
+  line-height: var(--lh-body);
   color: #6a6a6a;
 }
 
@@ -1113,7 +1185,7 @@ body.contents-open {
   margin: 0 0 8px;
   font-family: var(--subtitle-font);
   font-size: 16px;
-  line-height: 1.2;
+  line-height: var(--lh-ui);
   font-weight: 700;
   color: #000;
   text-align: center;
@@ -1181,7 +1253,7 @@ body.contents-open {
   margin: 0;
   font-family: var(--subtitle-font);
   font-size: 14px;
-  line-height: 1.35;
+  line-height: var(--lh-body);
   color: #6a6a6a;
 }
 
@@ -1189,7 +1261,7 @@ body.contents-open {
   margin: 0 0 8px;
   font-family: var(--subtitle-font);
   font-size: 16px;
-  line-height: 1.2;
+  line-height: var(--lh-ui);
   font-weight: 700;
   text-align: center;
   color: #000;
@@ -1295,7 +1367,7 @@ body.contents-open {
   gap: 7px;
   font-family: var(--subtitle-font);
   font-size: 13px;
-  line-height: 1.2;
+  line-height: var(--lh-ui);
   color: #333;
   transition: opacity 150ms ease;
   cursor: pointer;
@@ -1321,7 +1393,7 @@ body.contents-open {
   margin: 0;
   font-family: var(--subtitle-font);
   font-size: 14px;
-  line-height: 1.35;
+  line-height: var(--lh-body);
   color: #6a6a6a;
 }
 
@@ -1329,7 +1401,7 @@ body.contents-open {
   margin: 0 0 8px;
   font-family: var(--subtitle-font);
   font-size: 16px;
-  line-height: 1.2;
+  line-height: var(--lh-ui);
   font-weight: 700;
   text-align: center;
   color: #000;
@@ -1448,7 +1520,7 @@ body.contents-open {
   margin: 0;
   font-family: var(--subtitle-font);
   font-size: 14px;
-  line-height: 1.35;
+  line-height: var(--lh-body);
   color: #6a6a6a;
 }
 
@@ -1456,7 +1528,7 @@ body.contents-open {
   margin: 0 0 8px;
   font-family: var(--subtitle-font);
   font-size: 16px;
-  line-height: 1.2;
+  line-height: var(--lh-ui);
   font-weight: 700;
   text-align: center;
   color: #000;
@@ -1512,7 +1584,7 @@ body.contents-open {
   margin: 1px 0 12px;
   font-family: var(--subtitle-font);
   font-size: 12px;
-  line-height: 1.4;
+  line-height: var(--lh-caption);
   color: #555;
 }
 
@@ -1525,7 +1597,7 @@ body.contents-open {
   margin: 0;
   font-family: var(--subtitle-font);
   font-size: 14px;
-  line-height: 1.35;
+  line-height: var(--lh-body);
   color: #6a6a6a;
 }
 
@@ -1533,7 +1605,7 @@ body.contents-open {
   margin: 0 0 8px;
   font-family: var(--subtitle-font);
   font-size: 16px;
-  line-height: 1.2;
+  line-height: var(--lh-ui);
   font-weight: 700;
   text-align: center;
   color: #000;
@@ -1589,7 +1661,7 @@ body.contents-open {
   margin: 1px 0 12px;
   font-family: var(--subtitle-font);
   font-size: 12px;
-  line-height: 1.4;
+  line-height: var(--lh-caption);
   color: #555;
 }
 
@@ -1601,7 +1673,7 @@ body.contents-open {
   width: 590px;
 }
 
-.center-chart ul {
+.center-chart ul:not(.species-legend):not(.species-temporal-legend):not(.location-daynight-legend) {
   margin: 0;
   padding-left: 22px;
   display: flex;
@@ -1645,7 +1717,7 @@ body.contents-open {
   width: 100%;
   font-family: var(--subtitle-font);
   font-size: 14px;
-  line-height: 1.08;
+  line-height: var(--lh-title);
   color: #000;
 }
 
@@ -1710,7 +1782,7 @@ body.contents-open {
   margin: 0;
   font-family: var(--subtitle-font);
   font-size: 14px;
-  line-height: 1.2;
+  line-height: var(--lh-ui);
   font-weight: 400;
   color: #000;
 }
@@ -1751,7 +1823,7 @@ body.contents-open {
   margin: 0;
   font-family: var(--accent-font);
   font-size: 13px;
-  line-height: 1.15;
+  line-height: var(--lh-title);
   font-weight: 800;
   color: #0061b0;
 }
@@ -1782,7 +1854,7 @@ body.contents-open {
   gap: 12px;
   font-family: var(--accent-font);
   font-size: 13px;
-  line-height: 1.15;
+  line-height: var(--lh-title);
 }
 
 .built-dashboard-daynight div span:first-child,
@@ -1825,7 +1897,7 @@ body.contents-open {
   width: 100%;
   font-family: var(--accent-font);
   font-size: 13px;
-  line-height: 1.15;
+  line-height: var(--lh-title);
   font-weight: 800;
   color: #0061b0;
   text-align: center;
@@ -1841,7 +1913,7 @@ body.contents-open {
   width: 100%;
   font-family: var(--accent-font);
   font-size: 13px;
-  line-height: 1.15;
+  line-height: var(--lh-title);
   font-weight: 800;
   color: #474747;
   text-align: center;
@@ -1892,7 +1964,7 @@ body.contents-open {
 .built-dashboard-toplist div span:nth-child(1) {
   font-family: var(--accent-font);
   font-size: 13px;
-  line-height: 1.15;
+  line-height: var(--lh-title);
   color: #0061b0;
   font-weight: 800;
   white-space: nowrap;
@@ -1901,7 +1973,7 @@ body.contents-open {
 .built-dashboard-toplist div span:nth-child(2) {
   font-family: var(--title-font);
   font-size: 13px;
-  line-height: 1.1;
+  line-height: var(--lh-tight);
   color: #474747;
   font-weight: 500;
   min-width: 0;
@@ -1910,7 +1982,7 @@ body.contents-open {
 .built-dashboard-toplist div span:nth-child(3) {
   font-family: var(--accent-font);
   font-size: 13px;
-  line-height: 1.15;
+  line-height: var(--lh-title);
   color: #474747;
   font-weight: 800;
   white-space: nowrap;
@@ -1995,7 +2067,7 @@ body.contents-open {
   gap: 8px;
   font-family: var(--subtitle-font);
   font-size: 14px;
-  line-height: 1.2;
+  line-height: var(--lh-ui);
   color: #7a7a7a;
 }
 
@@ -2025,7 +2097,7 @@ body.contents-open {
   margin: 10px 0 0;
   font-family: var(--subtitle-font);
   font-size: 13px;
-  line-height: 1.3;
+  line-height: var(--lh-caption);
   color: #6a6a6a;
 }
 
@@ -2100,7 +2172,7 @@ body.contents-open {
   margin-left: 48px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 12px;
 }
 
 .model-right .sub-14 p {
@@ -2116,7 +2188,7 @@ body.contents-open {
   flex-direction: column;
   gap: 8px;
   font-size: 10px;
-  line-height: 1.35;
+  line-height: var(--lh-caption);
 }
 
 .citation-item {
@@ -2144,7 +2216,7 @@ body.contents-open {
   color: #222;
   font-family: var(--subtitle-font);
   font-size: 12px;
-  line-height: 1.35;
+  line-height: var(--lh-caption);
   white-space: pre-line;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
   pointer-events: none;
@@ -2162,7 +2234,7 @@ body.contents-open {
   color: #111;
   font-family: var(--subtitle-font);
   font-size: 13px;
-  line-height: 1.1;
+  line-height: var(--lh-tight);
   box-shadow: 0 8px 22px rgba(0, 0, 0, 0.16);
   cursor: pointer;
   opacity: 0;
@@ -2260,7 +2332,7 @@ body.image-viewer-open {
   flex-direction: column;
   gap: 8px;
   font-size: 10px;
-  line-height: 1.35;
+  line-height: var(--lh-caption);
 }
 
 .ack-text p {
@@ -2947,6 +3019,6 @@ body.image-viewer-open {
   }
 
   .map-copy {
-    gap: 32px;
+    gap: 24px;
   }
 }

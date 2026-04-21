@@ -297,14 +297,30 @@ const loadSpeciesDistributionChart = async () => {
     return;
   }
 
-  const data = rows
+  const mammalTrailingSpecies = "Other Mammals";
+  const nonMammalOrder = ["Birds", "Unidentified"];
+  const isNonMammalSpecies = (species) => nonMammalOrder.includes(species);
+  const sortDescending = (a, b) => b.value - a.value;
+  const sortSpeciesDistribution = (items) => {
+    const mammals = items
+      .filter((item) => !isNonMammalSpecies(item.species) && item.species !== mammalTrailingSpecies)
+      .sort(sortDescending);
+    const otherMammals = items.filter((item) => item.species === mammalTrailingSpecies);
+    const orderedNonMammals = nonMammalOrder.flatMap((species) => items.filter((item) => item.species === species));
+    const remaining = items
+      .filter((item) => !mammals.includes(item) && !otherMammals.includes(item) && !orderedNonMammals.includes(item))
+      .sort(sortDescending);
+
+    return [...mammals, ...otherMammals, ...remaining, ...orderedNonMammals];
+  };
+
+  const data = sortSpeciesDistribution(rows
     .slice(1)
     .map((row) => ({
       species: (row[speciesIdx] || "").trim(),
       value: Number.parseFloat((row[presenceIdx] || "").trim()),
     }))
-    .filter((item) => item.species.length > 0 && Number.isFinite(item.value) && item.value > 0)
-    .sort((a, b) => b.value - a.value);
+    .filter((item) => item.species.length > 0 && Number.isFinite(item.value) && item.value > 0));
 
   const total = data.reduce((sum, item) => sum + item.value, 0);
   if (data.length === 0 || total <= 0) {
@@ -371,6 +387,8 @@ const loadSpeciesDistributionChart = async () => {
   const labels = [];
   const legendItems = [];
 
+  let mammalsHeadingAdded = false;
+
   data.forEach((item, index) => {
     const ratio = item.value / total;
     const start = angleCursor;
@@ -404,8 +422,17 @@ const loadSpeciesDistributionChart = async () => {
     svg.appendChild(label);
     labels.push(label);
 
+    const isMammal = !isNonMammalSpecies(item.species);
+    if (isMammal && !mammalsHeadingAdded) {
+      const mammalsHeading = document.createElement("li");
+      mammalsHeading.className = "species-legend-heading";
+      mammalsHeading.textContent = "Mammals";
+      legend.appendChild(mammalsHeading);
+      mammalsHeadingAdded = true;
+    }
+
     const legendItem = document.createElement("li");
-    legendItem.className = "species-legend-item";
+    legendItem.className = `species-legend-item ${isMammal ? "is-mammal" : "is-non-mammal"}`;
     legendItem.dataset.index = String(index);
 
     const dot = document.createElement("span");
