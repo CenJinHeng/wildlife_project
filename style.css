@@ -1686,6 +1686,31 @@ body.contents-open {
   width: 100%;
 }
 
+.built-x-activity-flow {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.narrative-copy {
+  width: min(590px, 100%);
+  margin: 0 auto 0 0;
+  font-family: var(--subtitle-font);
+  font-size: 14px;
+  line-height: var(--lh-body);
+}
+
+.narrative-copy > ul {
+  gap: 10px;
+}
+
+.narrative-copy p {
+  margin: 0;
+  font-family: var(--subtitle-font);
+  font-size: 14px;
+  line-height: var(--lh-body);
+}
+
 .built-dashboard {
   width: 100%;
   display: flex;
@@ -2097,7 +2122,7 @@ body.contents-open {
   margin: 10px 0 0;
   font-family: var(--subtitle-font);
   font-size: 13px;
-  line-height: var(--lh-caption);
+  line-height: var(--lh-body);
   color: #6a6a6a;
 }
 
@@ -2168,15 +2193,27 @@ body.contents-open {
 }
 
 .model-right .sub-14 {
-  width: 440px;
-  margin-left: 48px;
+  width: min(590px, 100%);
+  margin: 0;
   display: flex;
   flex-direction: column;
   gap: 12px;
+  font-family: var(--subtitle-font);
+  font-size: 14px;
+  line-height: var(--lh-body);
 }
 
 .model-right .sub-14 p {
   margin: 0;
+  font-family: var(--subtitle-font);
+  font-size: 14px;
+  line-height: var(--lh-body);
+}
+
+.model-right .sub-14 ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .citation-list {
@@ -2332,7 +2369,7 @@ body.image-viewer-open {
   flex-direction: column;
   gap: 8px;
   font-size: 10px;
-  line-height: var(--lh-caption);
+  line-height: var(--lh-body);
 }
 
 .ack-text p {
@@ -2429,7 +2466,6 @@ body.image-viewer-open {
   .model-left img:first-child,
   .model-left img:last-child,
   .model-right img,
-  .model-right .sub-14,
   .citation-list,
   .ack-text {
     width: 100% !important;
