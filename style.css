@@ -193,6 +193,7 @@ body.contents-open {
 
 .data-sources-lines {
   overflow-wrap: anywhere;
+  color: #7a7a7a;
 }
 
 .nav-anchor {
@@ -889,12 +890,6 @@ body.contents-open {
   font-size: 14px;
   line-height: var(--lh-body);
   color: #7a7a7a;
-}
-
-.data-source-mini p:first-child {
-  font-size: 20px;
-  line-height: var(--lh-heading);
-  color: #000;
 }
 
 .built-vars-title {
@@ -1828,7 +1823,7 @@ body.contents-open {
 .built-dashboard-middle-grid {
   margin-top: 24px;
   display: grid;
-  grid-template-columns: 174px 303px;
+  grid-template-columns: 192px 285px;
   grid-template-rows: 183px 103px;
   column-gap: 17px;
   row-gap: 11px;
@@ -1860,6 +1855,7 @@ body.contents-open {
   line-height: var(--lh-title);
   font-weight: 800;
   color: #0061b0;
+  text-align: center;
 }
 
 .built-dashboard-presence,
@@ -1911,7 +1907,7 @@ body.contents-open {
 .built-dashboard-card-frequency {
   grid-column: 1;
   grid-row: 2;
-  padding: 0 30px;
+  padding: 0 18px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1935,6 +1931,7 @@ body.contents-open {
   font-weight: 800;
   color: #0061b0;
   text-align: center;
+  white-space: nowrap;
 }
 
 .built-dashboard-mini-label-secondary {
@@ -1969,20 +1966,16 @@ body.contents-open {
   gap: 11px;
 }
 
-.built-dashboard-richness-head .built-dashboard-label {
-  width: 100%;
-}
-
 .built-dashboard-richness {
   width: 100%;
 }
 
 .built-dashboard-taxa {
-  margin-top: 30px;
+  margin-top: 47px;
 }
 
 .built-dashboard-toplist {
-  margin-top: 30px;
+  margin-top: 37px;
   display: flex;
   flex-direction: column;
   gap: 7px;
@@ -2100,7 +2093,7 @@ body.contents-open {
   align-items: center;
   gap: 8px;
   font-family: var(--subtitle-font);
-  font-size: 14px;
+  font-size: 13px;
   line-height: var(--lh-ui);
   color: #7a7a7a;
 }

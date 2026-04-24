@@ -796,7 +796,7 @@ const loadSpeciesTemporalChart = async () => {
     return node;
   };
 
-  const colors = ["#d62728", "#2ca02c", "#ff7f0e", "#1f77b4"];
+  const colors = ["#1f77b4", "#2ca02c", "#ff7f0e", "#d62728"];
   const svgW = 620;
   const svgH = 356;
   const margin = { top: 26, right: 16, bottom: 40, left: 44 };
@@ -1207,6 +1207,14 @@ const loadLocationDayNightChart = async () => {
     xLabel.textContent = item.locationLabel;
     svg.appendChild(xLabel);
   });
+  const xAxisLabel = createSvgNode("text", {
+    x: margin.left + plotW / 2,
+    y: svgH - 12,
+    "text-anchor": "middle",
+    class: "location-daynight-axis-label",
+  });
+  xAxisLabel.textContent = "Location";
+  svg.appendChild(xAxisLabel);
 
   svg.appendChild(createSvgNode("line", { x1: margin.left, y1: margin.top, x2: margin.left, y2: bottomY, class: "location-daynight-axis-line" }));
   svg.appendChild(createSvgNode("line", { x1: margin.left, y1: bottomY, x2: svgW - margin.right, y2: bottomY, class: "location-daynight-axis-line" }));
@@ -1518,13 +1526,20 @@ const loadLocationFrequencyChart = async () => {
     const xLabel = createSvgNode("text", {
       x: xPos,
       y: yPos,
-      "text-anchor": "end",
+      "text-anchor": "middle",
       class: "location-frequency-axis-label",
-      transform: `rotate(-45 ${xPos} ${yPos})`,
     });
     xLabel.textContent = item.locationLabel;
     svg.appendChild(xLabel);
   });
+  const xAxisLabel = createSvgNode("text", {
+    x: margin.left + plotW / 2,
+    y: svgH - 12,
+    "text-anchor": "middle",
+    class: "location-frequency-axis-label",
+  });
+  xAxisLabel.textContent = "Location";
+  svg.appendChild(xAxisLabel);
 
   svg.appendChild(createSvgNode("line", { x1: margin.left, y1: margin.top, x2: margin.left, y2: bottomY, class: "location-frequency-axis-line" }));
   svg.appendChild(createSvgNode("line", { x1: margin.left, y1: bottomY, x2: svgW - margin.right, y2: bottomY, class: "location-frequency-axis-line" }));
@@ -1738,13 +1753,20 @@ const loadLocationRichnessChart = async () => {
     const xLabel = createSvgNode("text", {
       x: xPos,
       y: yPos,
-      "text-anchor": "end",
+      "text-anchor": "middle",
       class: "location-richness-axis-label",
-      transform: `rotate(-45 ${xPos} ${yPos})`,
     });
     xLabel.textContent = item.locationLabel;
     svg.appendChild(xLabel);
   });
+  const xAxisLabel = createSvgNode("text", {
+    x: margin.left + plotW / 2,
+    y: svgH - 12,
+    "text-anchor": "middle",
+    class: "location-richness-axis-label",
+  });
+  xAxisLabel.textContent = "Location";
+  svg.appendChild(xAxisLabel);
 
   svg.appendChild(createSvgNode("line", { x1: margin.left, y1: margin.top, x2: margin.left, y2: bottomY, class: "location-richness-axis-line" }));
   svg.appendChild(createSvgNode("line", { x1: margin.left, y1: bottomY, x2: svgW - margin.right, y2: bottomY, class: "location-richness-axis-line" }));
@@ -1791,7 +1813,7 @@ const loadLocationRichnessChart = async () => {
 
     group.append(bar, richnessLabel, top1Label, hitRect);
     svg.appendChild(group);
-    bars.push({ group, yTop, richnessLabel, top1Label, hitRect });
+    bars.push({ group, cx, yTop, richnessLabel, top1Label, hitRect });
   });
 
   let activeBar = -1;
@@ -1807,10 +1829,23 @@ const loadLocationRichnessChart = async () => {
         countY = bar.yTop + 14;
         speciesY = countY + 12;
       }
+      bar.richnessLabel.setAttribute("x", String(bar.cx));
+      bar.top1Label.setAttribute("x", String(bar.cx));
       bar.richnessLabel.setAttribute("y", String(countY));
       bar.top1Label.setAttribute("y", String(speciesY));
       bar.richnessLabel.setAttribute("visibility", isActive ? "visible" : "hidden");
       bar.top1Label.setAttribute("visibility", isActive ? "visible" : "hidden");
+
+      if (isActive) {
+        const labelPadding = 8;
+        const labelHalfWidth =
+          Math.max(bar.richnessLabel.getComputedTextLength(), bar.top1Label.getComputedTextLength()) / 2 + 4;
+        const minLabelX = labelPadding + labelHalfWidth;
+        const maxLabelX = svgW - labelPadding - labelHalfWidth;
+        const labelX = Math.min(maxLabelX, Math.max(minLabelX, bar.cx));
+        bar.richnessLabel.setAttribute("x", String(labelX));
+        bar.top1Label.setAttribute("x", String(labelX));
+      }
     });
   };
 
@@ -2091,8 +2126,8 @@ const loadBuiltEnvDashboard = async () => {
     setText("dashboard-presence", formatInteger(item.presence));
     setText("dashboard-day", formatCountPctInteger(item.dayPresence, item.dayPct));
     setText("dashboard-night", formatCountPctInteger(item.nightPresence, item.nightPct));
-    setText("dashboard-frequency", formatFixed2(item.photoFrequency));
-    setText("dashboard-recording-day", formatFixed2(item.trueDays));
+    setText("dashboard-frequency", `${formatFixed2(item.photoFrequency)}/day`);
+    setText("dashboard-recording-day", `${formatFixed2(item.trueDays)} day`);
 
     setText("dashboard-richness", formatInteger(item.speciesCount));
     setText("dashboard-aves", formatCountPctOneDecimal(item.aves, item.avesPct));
