@@ -1697,7 +1697,7 @@ const loadLocationRichnessChart = async () => {
 
   const svgW = 620;
   const svgH = 370;
-  const margin = { top: 24, right: 14, bottom: 68, left: 44 };
+  const margin = { top: 24, right: 44, bottom: 68, left: 44 };
   const plotW = svgW - margin.left - margin.right;
   const plotH = svgH - margin.top - margin.bottom;
   const bottomY = svgH - margin.bottom;
