@@ -722,9 +722,10 @@
           </div>
 
           <p class="sub-14 data-sources-lines" data-node-id="54:160">
-            Data sources: Urban heat:
+            Data sources:<br />
+            Urban heat (2ft resolution):
             <a href="https://xiaojianggis.github.io/pedheat/" target="_blank" rel="noreferrer">https://xiaojianggis.github.io/pedheat/</a><br />
-            Impervious surface:
+            Impervious surface (30m resolution):
             <a href="https://www.mrlc.gov/downloads/sciweb1/shared/mrlc/data-bundles/Annual_NLCD_FctImp_2024_CU_C1V1.zip" target="_blank" rel="noreferrer">https://www.mrlc.gov/downloads/sciweb1/shared/mrlc/data-bundles/Annual_NLCD_FctImp_2024_CU_C1V1.zip</a><br />
             Land use:
             <a href="https://catalog.dvrpc.org/dataset/land-use-2023" target="_blank" rel="noreferrer">https://catalog.dvrpc.org/dataset/land-use-2023</a>
@@ -733,13 +734,15 @@
 
         <section class="section-block" data-node-id="61:362">
           <h3 class="big-20" data-node-id="54:51">How we integrate built environment data with wildlife activity</h3>
-          <p class="sub-14" data-node-id="54:52">
-            Our team spatially joins wildlife activity with built environment dataset to enable joint analysis.
-            Each camera location is geo-referenced, and we create buffer zones around it to capture the
-            surrounding environmental context. Within these buffers, we extract specific built environment
-            variables and aggregate them into quantitative indicators. After testing various distances, we settled
-            on a 300-meter buffer zone as the data collection area.
-          </p>
+          <div class="section-copy-flow narrative-copy">
+            <p class="sub-14" data-node-id="54:52">
+              Our team spatially joins wildlife activity with built environment dataset to enable joint analysis.
+              Each camera location is geo-referenced, and we create buffer zones around it to capture the
+              surrounding environmental context. Within these buffers, we extract specific built environment
+              variables and aggregate them into quantitative indicators. After testing various distances, we settled
+              on a 300-meter buffer zone as the data collection area.
+            </p>
+          </div>
           <img src="assets/a5d29875bd1ee81e9c98470203bb8786bd09e054.png" alt="integration workflow" class="integration-img" data-node-id="54:300" />
         </section>
 
@@ -877,12 +880,12 @@
 
                 <section class="built-dashboard-middle">
                   <h4 class="built-dashboard-panel-title">
-                    Wildlife Presence Data in Location <span id="dashboard-location-name-middle">1</span>
+                    Wildlife Activity Data at Location <span id="dashboard-location-name-middle">1</span>
                   </h4>
                   <div class="built-dashboard-middle-grid">
                     <article class="built-dashboard-card built-dashboard-card-presence">
                       <div class="built-dashboard-presence-content">
-                        <p class="built-dashboard-label">Presence number</p>
+                        <p class="built-dashboard-label">Presence (count)</p>
                         <p class="built-dashboard-presence" id="dashboard-presence">0</p>
                         <div class="built-dashboard-daynight">
                           <div><span>Day</span><span id="dashboard-day">0 (0%)</span></div>
@@ -893,21 +896,21 @@
 
                     <article class="built-dashboard-card built-dashboard-card-frequency">
                       <div class="built-dashboard-mini">
-                        <p class="built-dashboard-mini-label">Frequency</p>
+                        <p class="built-dashboard-mini-label">Photo frequency</p>
                         <p class="built-dashboard-mini-value" id="dashboard-frequency">0</p>
-                        <p class="built-dashboard-mini-label built-dashboard-mini-label-secondary">Recording Day</p>
+                        <p class="built-dashboard-mini-label built-dashboard-mini-label-secondary">Sampling period</p>
                         <p class="built-dashboard-mini-value" id="dashboard-recording-day">0</p>
                       </div>
                     </article>
 
                     <article class="built-dashboard-card built-dashboard-card-richness">
                       <div class="built-dashboard-richness-head">
-                        <p class="built-dashboard-label">Richness (species count)</p>
+                        <p class="built-dashboard-label">Richness (species frequency)</p>
                         <p class="built-dashboard-richness" id="dashboard-richness">0</p>
                       </div>
                       <div class="built-dashboard-taxa">
-                        <div><span>Aves</span><span id="dashboard-aves">0 (0%)</span></div>
-                        <div><span>Mammalia</span><span id="dashboard-mammalia">0 (0%)</span></div>
+                        <div><span>Bird count</span><span id="dashboard-aves">0 (0%)</span></div>
+                        <div><span>Mammal count</span><span id="dashboard-mammalia">0 (0%)</span></div>
                       </div>
                       <div class="built-dashboard-toplist">
                         <div>
@@ -932,14 +935,14 @@
 
                 <section class="built-dashboard-right">
                   <h4 class="built-dashboard-panel-title">
-                    Build Environment Data in Location <span id="dashboard-location-name-right">1</span>
+                    Built Environment Data at Location <span id="dashboard-location-name-right">1</span>
                   </h4>
                   <div class="built-dashboard-metric-list">
                     <div class="built-dashboard-metric" data-metric="mrt">
                       <img src="assets/af9e032dd1b86fde24f956b40b6bcbe9d7677944.png" alt="" />
                       <div class="built-dashboard-metric-body">
                         <div class="built-dashboard-metric-head">
-                          <span>Radiant temperature</span>
+                          <span>Radiant temperature (°C)</span>
                           <span id="dashboard-mrt-value">0</span>
                         </div>
                         <div class="built-dashboard-metric-bar bg-orange"><span id="dashboard-mrt-fill"></span></div>
@@ -950,7 +953,7 @@
                       <img src="assets/6f3c8fae082589eb2c5852cbd863946448575b97.png" alt="" />
                       <div class="built-dashboard-metric-body">
                         <div class="built-dashboard-metric-head">
-                          <span>Impervious surface</span>
+                          <span>Impervious surface (%)</span>
                           <span id="dashboard-imp-value">0</span>
                         </div>
                         <div class="built-dashboard-metric-bar bg-yellow"><span id="dashboard-imp-fill"></span></div>
@@ -961,7 +964,7 @@
                       <img src="assets/35635351884f3ddf32de3f24b573d760e67c7989.png" alt="" />
                       <div class="built-dashboard-metric-body">
                         <div class="built-dashboard-metric-head">
-                          <span>Area of green space</span>
+                          <span>Area of green space (%)</span>
                           <span id="dashboard-green-value">0</span>
                         </div>
                         <div class="built-dashboard-metric-bar bg-green"><span id="dashboard-green-fill"></span></div>
@@ -972,7 +975,7 @@
                       <img src="assets/346533a0151ed4b659ba9c95cd64c8d0333456dc.png" alt="" />
                       <div class="built-dashboard-metric-body">
                         <div class="built-dashboard-metric-head">
-                          <span>Distance to hydrology</span>
+                          <span>Distance to hydrology (m)</span>
                           <span id="dashboard-water-value">0</span>
                         </div>
                         <div class="built-dashboard-metric-bar bg-blue"><span id="dashboard-water-fill"></span></div>
@@ -983,7 +986,7 @@
                       <img src="assets/bb0e8f45a6ef6aa61e7b9b0093a0b8b3b077f93f.png" alt="" />
                       <div class="built-dashboard-metric-body">
                         <div class="built-dashboard-metric-head">
-                          <span>Distance to transportation</span>
+                          <span>Distance to transportation (m)</span>
                           <span id="dashboard-trans-value">0</span>
                         </div>
                         <div class="built-dashboard-metric-bar bg-purple"><span id="dashboard-trans-fill"></span></div>
@@ -1234,7 +1237,7 @@
               Tools used:
             </p>
             <p>
-              Data analysis: RStudio
+              Data analysis: R, RStudio, ArcGIS Pro
             </p>
             <p>
               Web design and development: Visual Studio Code, Figma, Codex
